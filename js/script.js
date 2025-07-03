@@ -11,7 +11,7 @@ window.addEventListener("load", function () {
          const container = document.querySelector(".container");
          container.style.opacity = "1";
          container.style.transform = "translateY(0)";
-         container.style.boxShadow = "0 0 60px rgba(0, 255, 255, 0.3)";
+         container.style.boxShadow = "0 0 60px rgba(0, 255, 255, 0)";
       }, 500);
    }, 2000);
 });
