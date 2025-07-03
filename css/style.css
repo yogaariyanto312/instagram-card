@@ -17,7 +17,7 @@ body::before {
   left: 0;
   width: 100vw;
   height: 100vh;
-  background: url('/asset/asset1/bg4.jpg') center center / cover no-repeat;
+  background: url('/asset/asset1/bg5.avif') center center / cover no-repeat;
   z-index: -1;
   filter: brightness(50%) blur(1px);
   opacity: 1;
@@ -104,8 +104,9 @@ body::before {
 .username {
   font-size: 1.2rem;
   font-weight: 600;
+  
   margin-bottom: 0.5rem;
-  background: linear-gradient(90deg, #ffffff, #e1f011);
+  background: linear-gradient(90deg, #ffffff, #484d05);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -145,8 +146,8 @@ body::before {
 
 
 .btn:hover {
-  box-shadow: 0 20px 40px rgba(0, 255, 255, 0.4), 
-              0 10px 10px rgba(0, 255, 255, 0.2);
+  box-shadow: 0 8px 10px rgba(0, 255, 255, 0.158), 
+              0 10px 10px rgba(0, 255, 255, 0.075);
   border-color: rgba(0, 255, 255, 0.6);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
