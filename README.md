@@ -28,9 +28,3 @@ Dibuat sebagai **personal link hub** buat menampilkan semua social media & karya
 - AOS / Animasi manual via CSS
 
 ---
-
-## 📸 Preview
-
-![Preview](https://card.yogaariyanto.com) <!-- Ganti URL ini kalau punya -->
-
----
