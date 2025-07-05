@@ -31,7 +31,7 @@ Dibuat sebagai **personal link hub** buat menampilkan semua social media & karya
 
 ## 📸 Preview
 
-![Preview](https://yogaariyanto.com/preview.png) <!-- Ganti URL ini kalau punya -->
+![Preview](https://card.yogaariyanto.com/) <!-- Ganti URL ini kalau punya -->
 
 ---
 
