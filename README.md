@@ -34,9 +34,3 @@ Dibuat sebagai **personal link hub** buat menampilkan semua social media & karya
 ![Preview](https://card.yogaariyanto.com) <!-- Ganti URL ini kalau punya -->
 
 ---
-
-## 📁 Cara Pakai
-
-```bash
-git clone https://github.com/username/linktree-clone.git
-cd linktree-clone
