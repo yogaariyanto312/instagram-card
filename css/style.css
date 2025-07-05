@@ -10,24 +10,24 @@ body {
   padding: 1rem;
   position: relative;
 }
-body::before {
+body::before { /* Menambahkan elemen semu untuk latar belakang */
   content: "";
   position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
-  background: url('/asset/asset1/bg5.avif') center center / cover no-repeat;
-  z-index: -1;
-  filter: brightness(50%) blur(1px);
-  opacity: 1;
+  background: url('/asset/asset1/bg5.avif') center center / cover no-repeat; /* Ganti dengan gambar latar belakang Anda */
+  z-index: -1; /* Place the background behind the content */
+  filter: brightness(50%) blur(1px); /* Adjust brightness and blur as needed */
+  opacity: 1; /* Adjust opacity as needed */
   /* animation: floatbg 10s infinite alternate ease-in-out; */
-  pointer-events: none;
+  pointer-events: none; /* Prevent interaction with the background */
 }
 
 @keyframes floatbg {
-  0% { transform: scale(1) translateY(0); }
-  100% { transform: scale(1.05) translateY(-10px); }
+  0% { transform: scale(1) translateY(0); } /* Normal scale and position */
+  100% { transform: scale(1.05) translateY(-10px); }/* Slightly increased scale and moved up */
 }
 
 /* LOADING */
@@ -106,7 +106,7 @@ body::before {
   font-weight: 600;
   
   margin-bottom: 0.5rem;
-  background: linear-gradient(90deg, #ffffff, #484d05);
+  background: #ffffff;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
