@@ -110,7 +110,7 @@ body::before { /* Menambahkan elemen semu untuk latar belakang */
 .username {
   font-size: 1.2rem;
   font-weight: 600;
-  
+  letter-spacing: 1px;
   margin-bottom: 0.5rem;
   background: #ffffff;
   -webkit-background-clip: text;
