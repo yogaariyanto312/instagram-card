@@ -17,7 +17,7 @@ body::before { /* Menambahkan elemen semu untuk latar belakang */
   left: 0;
   width: 100vw;
   height: 100vh;
-  background: url('/asset/asset1/bg5.avif') center center / cover no-repeat; /* Ganti dengan gambar latar belakang Anda */
+  background: url('/asset/asset1/bg6.png') center center / cover no-repeat; /* Ganti dengan gambar latar belakang Anda */
   z-index: -1; /* Place the background behind the content */
   filter: brightness(50%) blur(1px); /* Adjust brightness and blur as needed */
   opacity: 1; /* Adjust opacity as needed */
@@ -56,7 +56,7 @@ body::before { /* Menambahkan elemen semu untuk latar belakang */
   width: 10px;
   height: 10px;
   border-radius: 50%;
-  background: cyan;
+  background: rgb(255, 255, 255);
   animation: bounce 0.6s infinite ease-in-out;
 }
 .loader span:nth-child(2) {
@@ -101,6 +101,12 @@ body::before { /* Menambahkan elemen semu untuk latar belakang */
   background-position: center;
 }
 
+.avatar:hover {
+  box-shadow: 0 8px 10px rgba(250, 249, 249, 0.082), 
+              0 10px 10px rgba(78, 78, 78, 0.281);
+  border-color: rgb(0, 0, 0);
+  transition: transform 0.6s ease, box-shadow 0.5s ease;
+}
 .username {
   font-size: 1.2rem;
   font-weight: 600;
@@ -146,9 +152,9 @@ body::before { /* Menambahkan elemen semu untuk latar belakang */
 
 
 .btn:hover {
-  box-shadow: 0 8px 10px rgba(0, 255, 255, 0.158), 
-              0 10px 10px rgba(0, 255, 255, 0.075);
-  border-color: rgba(0, 255, 255, 0.6);
+  box-shadow: 0 8px 10px rgba(250, 249, 249, 0.082), 
+              0 10px 10px rgba(255, 255, 255, 0.281);
+  border-color: rgba(0, 0, 0, 0.6);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
