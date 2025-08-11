@@ -1,6 +1,9 @@
 // Year
 document.getElementById("year").textContent = new Date().getFullYear();
+// document.getElementById("date").textContent = new Date().toDateString();
 
+
+// Loading
 window.addEventListener("load", function () {
    setTimeout(() => {
       const loading = document.getElementById("loading");
@@ -29,4 +32,12 @@ document.querySelectorAll(".btn").forEach((btn) => {
       btn.style.transform = "";
    });
 });
-  
+
+//heart
+document.getElementById("heart").addEventListener("click", function() {
+  this.classList.toggle("animate-heart");
+});
+// alert Injil
+function Injil() {
+   alert("Karena masa depan sungguh ada, dan harapanmu tidak akan hilang.");
+}
