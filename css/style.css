@@ -76,10 +76,10 @@ body::before { /* Menambahkan elemen semu untuk latar belakang */
 .container {
   background: rgba(0, 0, 0, 0);
   border-radius: 16px;
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(6.3px);
-  -webkit-backdrop-filter: blur(7.3px);
-  border: 1px solid rgba(255, 255, 255, 0.33);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.315);
+  backdrop-filter: blur(2.3px);
+  -webkit-backdrop-filter: blur(2.3px);
+  border: 1px solid rgba(255, 255, 255, 0.180);
   opacity: 0;
   transform: translateY(20px);
   transition: opacity 0.8s ease, transform 0.8s ease, box-shadow 0.8s ease;
@@ -107,7 +107,7 @@ body::before { /* Menambahkan elemen semu untuk latar belakang */
   box-shadow: 0 8px 10px rgba(250, 249, 249, 0.082), 
               0 10px 10px rgba(78, 78, 78, 0.281);
   border-color: rgb(0, 0, 0);
-  transition: transform 0.6s ease, box-shadow 0.5s ease;
+  transition: transform 0.8s ease, box-shadow 0.5s ease;
 }
 .username {
   font-size: 1.2rem;
@@ -137,7 +137,7 @@ body::before { /* Menambahkan elemen semu untuk latar belakang */
 }
 
 
-.btn {
+.btn { 
   perspective: 800px;
   transform-style: preserve-3d;
   position: relative;
@@ -157,9 +157,9 @@ body::before { /* Menambahkan elemen semu untuk latar belakang */
   /* Efek glass */
   background: rgba(212, 212, 212, 0.048);
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(12.4px);
-  -webkit-backdrop-filter: blur(12.4px);
-  border: 1px solid rgba(255, 255, 255, 0.33);
+  backdrop-filter: blur(14.4px);
+  -webkit-backdrop-filter: blur(14.4px);
+  border: 1px solid rgba(255, 255, 255, 0.007);
 }
 
 
