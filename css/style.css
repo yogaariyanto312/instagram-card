@@ -77,7 +77,7 @@ body::before { /* Menambahkan elemen semu untuk latar belakang */
   background: rgba(0, 0, 0, 0);
   border-radius: 16px;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.315);
-  backdrop-filter: blur(2.3px);
+  backdrop-filter: blur(2.3px); /* efek blur ala glass */
   -webkit-backdrop-filter: blur(2.3px);
   border: 1px solid rgba(255, 255, 255, 0.180);
   opacity: 0;
