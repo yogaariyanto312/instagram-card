@@ -98,7 +98,7 @@ body::before { /* Menambahkan elemen semu untuk latar belakang */
   border-radius: 50%;
   margin: 0 auto 1rem;
   /* background-image: url('/asset/profile/profile2.jpg'); */
-  background-image: url('/asset/profile/profile4.jpg');
+  background-image: url('/asset/profile/profile5.jpg');
   background-size: cover;
   background-position: center;
 }
