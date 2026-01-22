@@ -34,7 +34,8 @@
     <div class="username">Yoga Ariyanto</div>
     <div class="injil"><span class="link-injil" onclick="Injil()">Amsal 23:18</span></div>
     
-    <div class="bio">Karena masa depan sungguh ada, dan harapanmu tidak akan hilang.</div>
+    <!-- <div class="bio">Tidak semua anak bisa memilih jalannya sendiri.</div> -->
+    <div class="bio">Tidak semua anak bisa memilih jalannya sendiri.<br>Sebagian dari mereka, <br>berhenti bermimpi untuk memulai menafkahi.</div>
 
     <!-- WRAPPER GRID UNTUK TOMBOL -->
     <div class="links-grid">
@@ -75,6 +76,22 @@
   const script = document.createElement('script');
   script.src = 'js/script.js?v=' + new Date().getTime();
   document.body.appendChild(script);
+   /* Mencegah Inspect Element */
+    document.addEventListener('contextmenu', (e) => {
+      e.preventDefault();
+      showToast("Klik kanan dinonaktifkan!");
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (
+        e.key === 'F12' || 
+        (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'J')) || 
+        (e.ctrlKey && e.key === 'U')
+      ) {
+        e.preventDefault();
+        showToast("Inspect Element dinonaktifkan!");
+      }
+    });
 </script>
 
 </body>

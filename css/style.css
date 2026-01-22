@@ -1,4 +1,4 @@
-    /* CSS dari style.css */
+/* CSS dari style.css */
     
     /* 1. LAYER PALING BELAKANG: FOTO AESTHETIC */
     body::before {
@@ -8,8 +8,7 @@
       left: 0;
       width: 100vw;
       height: 100vh;
-      /* background: url('https://images.unsplash.com/photo-1478760329108-5c3ed9d495a0?q=80&w=2074&auto=format&fit=crop') center center / cover no-repeat; */
-      background: url('/asset/asset1/bg.6.avif') center center / cover no-repeat;
+      background: url('https://images.unsplash.com/photo-1478760329108-5c3ed9d495a0?q=80&w=2074&auto=format&fit=crop') center center / cover no-repeat;
       z-index: -2;
       filter: brightness(50%) blur(0px);
     }
@@ -111,7 +110,7 @@
     
     .link-injil {
         text-decoration: none;
-        border-bottom: 1px dashed rgba(255,255,255,0.4);
+        /* border-bottom: 1px dashed rgba(255,255,255,0.4); */
         transition: all 0.3s;
         padding-bottom: 2px;
     }
@@ -266,7 +265,7 @@
     
     .toast {
         background: rgba(255, 255, 255, 0.1);
-        backdrop-filter: blur(16px);
+        backdrop-filter: blur(26px);
         -webkit-backdrop-filter: blur(16px);
         color: white;
         padding: 14px 28px;
