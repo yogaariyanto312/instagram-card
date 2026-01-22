@@ -1,205 +1,309 @@
-/* BACKGROUND */
-body {
-  background-color: #0e0e0e;
-  color: #fff;
-  font-family: 'Inter', sans-serif;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  padding: 1rem;
-  position: relative;
-}
-body::before { /* Menambahkan elemen semu untuk latar belakang */
-  content: "";
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background: url('/asset/asset1/bg6.png') center center / cover no-repeat; /* Ganti dengan gambar latar belakang Anda */
-  z-index: -1; /* Place the background behind the content */
-  filter: brightness(50%) blur(1px); /* Adjust brightness and blur as needed */
-  opacity: 1; /* Adjust opacity as needed */
-  /* animation: floatbg 10s infinite alternate ease-in-out; */
-  pointer-events: none; /* Prevent interaction with the background */
-}
+    /* CSS dari style.css */
+    
+    /* 1. LAYER PALING BELAKANG: FOTO AESTHETIC */
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      /* background: url('https://images.unsplash.com/photo-1478760329108-5c3ed9d495a0?q=80&w=2074&auto=format&fit=crop') center center / cover no-repeat; */
+      background: url('/asset/asset1/bg.6.avif') center center / cover no-repeat;
+      z-index: -2;
+      filter: brightness(50%) blur(0px);
+    }
 
-@keyframes floatbg {
-  0% { transform: scale(1) translateY(0); } /* Normal scale and position */
-  100% { transform: scale(1.05) translateY(-10px); }/* Slightly increased scale and moved up */
-}
+    /* 2. LAYER TENGAH: CANVAS PARTIKEL */
+    #bg-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+    }
 
-/* LOADING */
-#loading {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background-color: #0e0e0e;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  font-size: 1.2rem;
-  z-index: 9999;
-  opacity: 1;
-  transition: opacity 1.1s ease, transform 1.1s ease;
-  transform: translateY(0);
-}
-.loader {
-  display: flex;
-  gap: 0.5rem;
-}
-.loader span {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background: rgb(255, 255, 255);
-  animation: bounce 0.6s infinite ease-in-out;
-}
-.loader span:nth-child(2) {
-  animation-delay: 0.1s;
-}
-.loader span:nth-child(3) {
-  animation-delay: 0.2s;
-}
+    body {
+      color: #fff;
+      font-family: 'Inter', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 1rem;
+      position: relative;
+      margin: 0;
+      overflow-x: hidden;
+    }
 
-@keyframes bounce {
-  0%, 80%, 100% { transform: scale(0); }
-  40% { transform: scale(1); }
-}
+    /* CARD */
+    .container {
+      background: rgba(20, 20, 20, 0.4);
+      border-radius: 20px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      opacity: 0;
+      transform: translateY(20px);
+      max-width: 380px;
+      width: 100%;
+      padding: 2.5rem 2rem;
+      text-align: center;
+      animation: fadeIn 1.2s ease forwards;
+      transition: max-width 0.5s ease;
+    }
 
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
 
-/* CARD */
-.container {
-  background: rgba(0, 0, 0, 0);
-  border-radius: 16px;
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.315);
-  backdrop-filter: blur(2.3px); /* efek blur ala glass */
-  -webkit-backdrop-filter: blur(2.3px);
-  border: 1px solid rgba(255, 255, 255, 0.180);
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.8s ease, transform 0.8s ease, box-shadow 0.8s ease;
-  max-width: 360px;
-  width: 100%;
-  padding: 2rem 1.5rem;
-  text-align: center;
-  animation: fadeIn 1.2s ease forwards;
-}
+    /* UPDATE STYLE AVATAR */
+    .avatar {
+      display: block;
+      width: 120px;
+      height: 120px;
+      margin: 0 auto 1.2rem;
+      border-radius: 50%;
+      object-fit: cover;
+      object-position: center;
+      border: 3px solid rgba(255,255,255,0.2);
+      transition: all 0.5s ease;
+      background-color: #333;
+    }
 
+    .avatar:hover {
+      box-shadow: 0 0 25px rgba(255, 255, 255, 0.3);
+      border-color: rgb(255, 255, 255);
+      transform: scale(1.05);
+    }
 
-.avatar {
-  text-align: center;
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  margin: 0 auto 1rem;
-  /* background-image: url('/asset/profile/profile2.jpg'); */
-  background-image: url('/asset/profile/profile5.jpg');
-  background-size: cover;
-  background-position: center;
-}
+    .username {
+      font-size: 1.35rem;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      margin-bottom: 0.5rem;
+      color: #ffffff;
+      text-align: center;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+    }
 
-.avatar:hover {
-  box-shadow: 0 8px 10px rgba(250, 249, 249, 0.082), 
-              0 10px 10px rgba(78, 78, 78, 0.281);
-  border-color: rgb(0, 0, 0);
-  transition: transform 0.8s ease, box-shadow 0.5s ease;
-}
-.username {
-  font-size: 1.2rem;
-  font-weight: 600;
-  letter-spacing: 1px;
-  margin-bottom: 0.5rem;
-  background: #ffffff;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  color: transparent;
-  text-align: center;
-}
+    .bio {
+      font-size: 0.95rem;
+      color: #d1d5db;
+      text-align: center;
+      margin-bottom: 1.8rem;
+      line-height: 1.6;
+      font-weight: 400;
+    }
 
-.bio {
-  font-size: 0.95rem;
-  color: #ccc;
-  text-align: center;
-  margin-bottom: 1.5rem;
-}
+    .injil {
+      text-align: center;
+      font-size: 0.9rem;
+      color: #ccc;
+      margin-bottom: 0.5rem;
+      cursor: pointer;
+    }
+    
+    .link-injil {
+        text-decoration: none;
+        border-bottom: 1px dashed rgba(255,255,255,0.4);
+        transition: all 0.3s;
+        padding-bottom: 2px;
+    }
+    .link-injil:hover {
+        color: white;
+        border-bottom-color: white;
+        text-shadow: 0 0 8px rgba(255,255,255,0.6);
+    }
 
-.injil {
-  text-align: center;
-  font-size: 0.95rem;
-  color: #ccc;
-  margin-bottom: 0.5rem;
-}
+    /* WRAPPER GRID UNTUK TOMBOL */
+    .links-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+      width: 100%;
+    }
 
+    /* --- REDESIGNED BUTTONS --- */
+    .btn { 
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center; /* MOBILE: Default Center */
+      gap: 0.8rem;
+      padding: 0.7rem 1rem;
+      border-radius: 16px;
+      font-weight: 600;
+      text-decoration: none;
+      color: #f3f4f6;
+      transition: all 0.3s ease;
+      margin-bottom: 0; 
+      overflow: hidden;
+      width: 100%;
+      box-sizing: border-box;
 
-.btn { 
-  perspective: 800px;
-  transform-style: preserve-3d;
-  position: relative;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  padding: 0.75rem;
-  border-radius: 16px;
-  font-weight: 600;
-  text-decoration: none;
-  color: white;
-  transition: transform 0.2s, box-shadow 0.2s;
-  margin-bottom: 0.75rem;
+      /* Glassmorphism */
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
 
-  /* Efek glass */
-  background: rgba(212, 212, 212, 0.048);
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(14.4px);
-  -webkit-backdrop-filter: blur(14.4px);
-  border: 1px solid rgba(255, 255, 255, 0.007);
-}
+    /* Efek Shine */
+    .btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+      transition: 0.5s;
+    }
 
+    .btn:hover::before {
+      left: 100%;
+    }
 
+    .btn:hover {
+      background: rgba(255, 255, 255, 0.12);
+      border-color: rgba(255, 255, 255, 0.4);
+      color: #ffffff;
+      transform: translateY(-2px);
+    }
+    
+    /* --- REDESIGNED ICONS (FLOATING GLASS BOX) --- */
+    .btn i, .btn svg {
+        font-size: 1.2rem;
+        width: 38px;
+        height: 38px;
+        background: rgba(0, 0, 0, 0.2);
+        border-radius: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-shrink: 0;
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        border: 1px solid rgba(255,255,255,0.05);
+        color: white;
+    }
+    
+    /* Warna Brand Asli */
+    .fa-instagram { color: #ff99cc; text-shadow: 0 0 10px rgba(255, 105, 180, 0.5); }
+    .fa-facebook { color: #66b3ff; text-shadow: 0 0 10px rgba(24, 119, 242, 0.5); }
+    .fa-linkedin { color: #00a0dc; }
+    .fa-github { color: #f0f6fc; }
+    .fa-tiktok { color: #fe2c55; text-shadow: 2px 2px 0px #25f4ee; } 
+    .fa-youtube { color: #ff4d4d; text-shadow: 0 0 10px rgba(255, 0, 0, 0.5); }
+    .fa-discord { color: #7289da; }
+    .fa-id-badge { color: #4ade80; }
+    
+    /* SVG Fill Handling - KECUALI TRAKTEER */
+    /* Aturan ini TIDAK akan berlaku untuk elemen dengan class trakteer-icon */
+    .btn svg:not(.trakteer-icon) path { 
+        fill: #e0e0e0; 
+        transition: fill 0.3s; 
+    }
+    .btn:hover svg:not(.trakteer-icon) path { 
+        fill: #ffffff; 
+    }
 
-.btn:hover {
-  box-shadow: 0 8px 10px rgba(250, 249, 249, 0.082), 
-              0 10px 10px rgba(255, 255, 255, 0.281);
-  border-color: rgba(0, 0, 0, 0.6);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
+    /* Style Khusus Trakteer: Biarkan warna asli dari SVG muncul */
+    .trakteer-icon {
+        padding: 5px;
+        box-sizing: border-box;
+    }
+    /* Kita TIDAK mengatur fill untuk .trakteer-icon path, sehingga akan menggunakan atribut fill dari HTML */
 
+    /* Hover Effect Spesifik pada Ikon */
+    .btn:hover i, .btn:hover svg {
+        background: rgba(255, 255, 255, 0.2);
+        transform: scale(1.15) rotate(5deg);
+        border-color: rgba(255, 255, 255, 0.5);
+        box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+    }
 
-@keyframes glitchHover {
-  0% { transform: scale(1.05) rotate(-1deg) skew(-2deg) translate(0, 0); }
-  25% { transform: translate(-1px, 1px); }
-  50% { transform: translate(1px, -1px); }
-  75% { transform: translate(-1px, 1px); }
-  100% { transform: translate(0, 0); }
-}
+    footer {
+      font-size: 0.8rem;
+      color: #9ca3af;
+      margin-top: 2rem;
+      letter-spacing: 0.5px;
+    }
 
+    .fa-heart {
+      color: #9ca3af;
+      animation: pulse 1.5s ease-in-out infinite;
+      cursor: pointer;
+      transition: color 0.3s;
+    }
 
-footer {
-  font-size: 0.75rem;
-  color: #aaa;
-  margin-top: 1rem;
-}
+    .animate-heart {
+      color: #ef4444;
+      animation: pulse 0.6s ease;
+    }
 
-.fa-heart {
-  color: rgb(155, 155, 155);
-  animation: pulse 1.2s ease-in-out infinite;
-}
+    @keyframes pulse {
+      0%   { transform: scale(1); }
+      25%  { transform: scale(1.2); }
+      50%  { transform: scale(1); }
+      75%  { transform: scale(1.2); }
+      100% { transform: scale(1); }
+    }
 
-.animate-heart {
-  animation: pulse 0.6s ease;
-}
+    /* Toast Notification */
+    #toast-container {
+        position: fixed;
+        top: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 10000;
+    }
+    
+    .toast {
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        color: white;
+        padding: 14px 28px;
+        border-radius: 50px;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        margin-bottom: 10px;
+        font-size: 0.95rem;
+        font-weight: 500;
+        animation: slideDown 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+    }
+    
+    @keyframes slideDown {
+        from { transform: translate(-50%, -100%); opacity: 0; }
+        to { transform: translate(0, 0); opacity: 1; }
+    }
 
-@keyframes pulse {
-  0%   { transform: scale(1); }
-  25%  { transform: scale(1.2); }
-  50%  { transform: scale(1); }
-  75%  { transform: scale(1.2); }
-  100% { transform: scale(1); }
-}
+    @keyframes fadeOut {
+        to { opacity: 0; transform: translateY(-20px); }
+    }
+
+    /* --- RESPONSIVE DESKTOP (GRID 2x) --- */
+    @media (min-width: 768px) {
+      .container {
+        max-width: 650px; 
+      }
+      
+      .links-grid {
+        grid-template-columns: repeat(2, 1fr); 
+        gap: 1.2rem; 
+      }
+      
+      .btn {
+          padding-left: 1.5rem;
+          justify-content: flex-start; /* DESKTOP: Rata Kiri */
+      }
+    }
