@@ -61,43 +61,103 @@
       }
     }
 
-    /* UPDATE STYLE AVATAR */
+    /* AVATAR WRAPPER - untuk gradient ring */
+    .avatar-wrapper {
+      position: relative;
+      width: 128px;
+      height: 128px;
+      margin: 0 auto 1.4rem;
+    }
+
+    /* Gradient ring animasi berputar */
+    .avatar-wrapper::before {
+      content: '';
+      position: absolute;
+      inset: -3px;
+      border-radius: 50%;
+      background: conic-gradient(
+        from 0deg,
+        #f9a8d4, #c084fc, #818cf8, #38bdf8,
+        #34d399, #facc15, #fb923c, #f9a8d4
+      );
+      animation: spinRing 4s linear infinite;
+      z-index: 0;
+    }
+
+    /* Padding putih tipis antara ring dan foto */
+    .avatar-wrapper::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      background: rgba(20, 20, 20, 0.85);
+      z-index: 1;
+      margin: 2px;
+    }
+
+    @keyframes spinRing {
+      to { transform: rotate(360deg); }
+    }
+
     .avatar {
       display: block;
+      position: relative;
       width: 120px;
       height: 120px;
-      margin: 0 auto 1.2rem;
       border-radius: 50%;
       object-fit: cover;
       object-position: center;
-      border: 3px solid rgba(255,255,255,0.2);
-      transition: all 0.5s ease;
+      border: none;
       background-color: #333;
+      z-index: 2;
+      margin: 4px;
+      transition: transform 0.4s ease, filter 0.4s ease;
     }
 
-    .avatar:hover {
-      box-shadow: 0 0 25px rgba(255, 255, 255, 0.3);
-      border-color: rgb(255, 255, 255);
-      transform: scale(1.05);
+    .avatar-wrapper:hover .avatar {
+      transform: scale(1.06);
+      filter: brightness(1.08);
+    }
+
+    .avatar-wrapper:hover::before {
+      animation-duration: 1.5s;
     }
 
     .username {
-      font-size: 1.35rem;
+      font-size: 1.4rem;
       font-weight: 700;
-      letter-spacing: 0.5px;
-      margin-bottom: 0.5rem;
-      color: #ffffff;
+      letter-spacing: 0.4px;
+      margin-bottom: 0.4rem;
       text-align: center;
-      text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+      background: linear-gradient(135deg, #ffffff 0%, #d1d5db 60%, #9ca3af 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      filter: drop-shadow(0 2px 8px rgba(0,0,0,0.5));
+    }
+
+    /* Divider tipis antara nama dan bio */
+    .username::after {
+      content: '';
+      display: block;
+      width: 40px;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.35), transparent);
+      margin: 0.55rem auto 0;
+      border-radius: 2px;
     }
 
     .bio {
-      font-size: 0.95rem;
-      color: #d1d5db;
+      font-size: 0.88rem;
+      color: rgba(209, 213, 219, 0.85);
       text-align: center;
       margin-bottom: 1.8rem;
-      line-height: 1.6;
+      line-height: 1.75;
       font-weight: 400;
+      font-style: italic;
+      letter-spacing: 0.1px;
+      position: relative;
+      padding: 0 0.5rem;
     }
 
     .injil {
@@ -124,107 +184,165 @@
     .links-grid {
       display: grid;
       grid-template-columns: 1fr;
-      gap: 1rem;
+      gap: 0.75rem;
       width: 100%;
+    }
+
+    /* Stagger animation tiap button */
+    .links-grid .btn:nth-child(1)  { animation-delay: 0.05s; }
+    .links-grid .btn:nth-child(2)  { animation-delay: 0.10s; }
+    .links-grid .btn:nth-child(3)  { animation-delay: 0.15s; }
+    .links-grid .btn:nth-child(4)  { animation-delay: 0.20s; }
+    .links-grid .btn:nth-child(5)  { animation-delay: 0.25s; }
+    .links-grid .btn:nth-child(6)  { animation-delay: 0.30s; }
+    .links-grid .btn:nth-child(7)  { animation-delay: 0.35s; }
+    .links-grid .btn:nth-child(8)  { animation-delay: 0.40s; }
+    .links-grid .btn:nth-child(9)  { animation-delay: 0.45s; }
+    .links-grid .btn:nth-child(10) { animation-delay: 0.50s; }
+
+    @keyframes btnFadeIn {
+      from { opacity: 0; transform: translateY(12px); }
+      to   { opacity: 1; transform: translateY(0); }
     }
 
     /* --- REDESIGNED BUTTONS --- */
-    .btn { 
+    .btn {
       position: relative;
       display: flex;
       align-items: center;
-      justify-content: center; /* MOBILE: Default Center */
-      gap: 0.8rem;
-      padding: 0.7rem 1rem;
-      border-radius: 16px;
+      justify-content: center;
+      gap: 0.55rem;
+      padding: 0.75rem 1.1rem;
+      border-radius: 14px;
+      font-size: 0.92rem;
       font-weight: 600;
+      letter-spacing: 0.2px;
       text-decoration: none;
-      color: #f3f4f6;
-      transition: all 0.3s ease;
-      margin-bottom: 0; 
+      color: #e5e7eb;
       overflow: hidden;
       width: 100%;
       box-sizing: border-box;
+      cursor: pointer;
 
       /* Glassmorphism */
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.10);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.25), inset 0 1px 0 rgba(255,255,255,0.07);
+
+      opacity: 0;
+      animation: btnFadeIn 0.5s ease forwards;
+      transition: background 0.25s ease, border-color 0.25s ease,
+                  box-shadow 0.25s ease, transform 0.2s ease, color 0.2s ease;
     }
 
-    /* Efek Shine */
+    /* Efek Shine sweep */
     .btn::before {
       content: '';
       position: absolute;
       top: 0;
-      left: -100%;
-      width: 100%;
+      left: -110%;
+      width: 60%;
       height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
-      transition: 0.5s;
+      background: linear-gradient(105deg, transparent, rgba(255,255,255,0.12), transparent);
+      transition: left 0.55s ease;
+      pointer-events: none;
     }
+    .btn:hover::before { left: 150%; }
 
-    .btn:hover::before {
-      left: 100%;
+    /* Gradient line bawah (aksen warna brand) */
+    .btn::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      width: 0;
+      height: 2px;
+      border-radius: 2px;
+      background: var(--btn-accent, rgba(255,255,255,0.5));
+      transform: translateX(-50%);
+      transition: width 0.3s ease;
     }
+    .btn:hover::after { width: 70%; }
 
     .btn:hover {
-      background: rgba(255, 255, 255, 0.12);
-      border-color: rgba(255, 255, 255, 0.4);
+      background: rgba(255, 255, 255, 0.11);
+      border-color: rgba(255, 255, 255, 0.28);
       color: #ffffff;
       transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.35), 0 0 0 1px rgba(255,255,255,0.06),
+                  var(--btn-glow, 0 0 0 transparent);
     }
-    
-    /* --- REDESIGNED ICONS (FLOATING GLASS BOX) --- */
+
+    .btn:active {
+      transform: translateY(0px) scale(0.97);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+      transition: transform 0.1s ease, box-shadow 0.1s ease;
+    }
+
+    /* Warna aksen & glow per platform */
+    .btn[href*="instagram"]  { --btn-accent: #e1306c; --btn-glow: 0 4px 20px rgba(225,48,108,0.25); }
+    .btn[href*="facebook"]   { --btn-accent: #1877f2; --btn-glow: 0 4px 20px rgba(24,119,242,0.25); }
+    .btn[href*="linkedin"]   { --btn-accent: #0077b5; --btn-glow: 0 4px 20px rgba(0,119,181,0.25); }
+    .btn[href*="github"]     { --btn-accent: #d1d5db; --btn-glow: 0 4px 20px rgba(209,213,219,0.2); }
+    .btn[href*="tiktok"]     { --btn-accent: #fe2c55; --btn-glow: 0 4px 20px rgba(254,44,85,0.25); }
+    .btn[href*="youtube"]    { --btn-accent: #ff0000; --btn-glow: 0 4px 20px rgba(255,0,0,0.25); }
+    .btn[href*="discord"]    { --btn-accent: #5865f2; --btn-glow: 0 4px 20px rgba(88,101,242,0.25); }
+    .btn[href*="trakteer"]   { --btn-accent: #ef4444; --btn-glow: 0 4px 20px rgba(239,68,68,0.25); }
+    .btn[href*="yogaariyanto.com"] { --btn-accent: #4ade80; --btn-glow: 0 4px 20px rgba(74,222,128,0.25); }
+    .btn[href*="n2g"]        { --btn-accent: #6ee7b7; --btn-glow: 0 4px 20px rgba(110,231,183,0.2); }
+
+    /* --- IKON (FLOATING GLASS BOX) --- */
     .btn i, .btn svg {
-        font-size: 1.2rem;
-        width: 38px;
-        height: 38px;
-        background: rgba(0, 0, 0, 0.2);
+        font-size: 1.1rem;
+        width: 36px;
+        height: 36px;
+        background: rgba(0, 0, 0, 0.22);
         border-radius: 10px;
         display: flex;
         justify-content: center;
         align-items: center;
         flex-shrink: 0;
-        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        border: 1px solid rgba(255,255,255,0.05);
+        transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        border: 1px solid rgba(255,255,255,0.07);
         color: white;
     }
-    
-    /* Warna Brand Asli */
-    .fa-instagram { color: #ff99cc; text-shadow: 0 0 10px rgba(255, 105, 180, 0.5); }
-    .fa-facebook { color: #66b3ff; text-shadow: 0 0 10px rgba(24, 119, 242, 0.5); }
-    .fa-linkedin { color: #00a0dc; }
-    .fa-github { color: #f0f6fc; }
-    .fa-tiktok { color: #fe2c55; text-shadow: 2px 2px 0px #25f4ee; } 
-    .fa-youtube { color: #ff4d4d; text-shadow: 0 0 10px rgba(255, 0, 0, 0.5); }
-    .fa-discord { color: #7289da; }
-    .fa-id-badge { color: #4ade80; }
-    
-    /* SVG Fill Handling - KECUALI TRAKTEER */
-    /* Aturan ini TIDAK akan berlaku untuk elemen dengan class trakteer-icon */
-    .btn svg:not(.trakteer-icon) path { 
-        fill: #e0e0e0; 
-        transition: fill 0.3s; 
-    }
-    .btn:hover svg:not(.trakteer-icon) path { 
-        fill: #ffffff; 
-    }
 
-    /* Style Khusus Trakteer: Biarkan warna asli dari SVG muncul */
+    /* Warna Brand Asli */
+    .fa-instagram { color: #ff80ab; }
+    .fa-facebook  { color: #74b9ff; }
+    .fa-linkedin  { color: #29b6f6; }
+    .fa-github    { color: #f0f6fc; }
+    .fa-tiktok    { color: #fe2c55; filter: drop-shadow(1px 1px 0px #25f4ee); }
+    .fa-youtube   { color: #ff5252; }
+    .fa-discord   { color: #7289da; }
+    .fa-id-badge  { color: #4ade80; }
+
+    /* SVG Fill Handling - KECUALI TRAKTEER */
+    .btn svg:not(.trakteer-icon) path {
+        fill: #d1d5db;
+        transition: fill 0.3s;
+    }
+    .btn:hover svg:not(.trakteer-icon) path { fill: #ffffff; }
+
+    /* Style Khusus Trakteer */
     .trakteer-icon {
         padding: 5px;
         box-sizing: border-box;
     }
-    /* Kita TIDAK mengatur fill untuk .trakteer-icon path, sehingga akan menggunakan atribut fill dari HTML */
 
-    /* Hover Effect Spesifik pada Ikon */
+    /* Label teks button - lebar tetap agar icon sejajar di mobile */
+    .btn-label {
+      min-width: 82px;
+    }
+
+    /* Hover Effect pada Ikon */
     .btn:hover i, .btn:hover svg {
-        background: rgba(255, 255, 255, 0.2);
-        transform: scale(1.15) rotate(5deg);
-        border-color: rgba(255, 255, 255, 0.5);
-        box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+        background: rgba(255, 255, 255, 0.18);
+        transform: scale(1.18) rotate(6deg);
+        border-color: rgba(255, 255, 255, 0.4);
+        box-shadow: 0 0 12px rgba(255, 255, 255, 0.15);
     }
 
     footer {
@@ -290,6 +408,41 @@
         to { opacity: 0; transform: translateY(-20px); }
     }
 
+    /* --- TOOLTIP POPOVER --- */
+    .btn-tooltip {
+      position: fixed;
+      z-index: 9999;
+      background: rgba(18, 18, 22, 0.92);
+      border: 1px solid rgba(255, 255, 255, 0.13);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      color: #e5e7eb;
+      padding: 9px 15px;
+      border-radius: 10px;
+      font-size: 0.8rem;
+      font-family: 'Inter', sans-serif;
+      font-weight: 500;
+      white-space: nowrap;
+      pointer-events: none;
+      opacity: 0;
+      transform: translateY(6px) scale(0.95);
+      transition: opacity 0.18s ease, transform 0.18s cubic-bezier(0.34, 1.56, 0.64, 1);
+      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.55), 0 0 0 1px rgba(255,255,255,0.04);
+    }
+    .btn-tooltip.visible {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+    .btn-tooltip::after {
+      content: '';
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      border: 6px solid transparent;
+      border-top-color: rgba(255, 255, 255, 0.13);
+    }
+
     /* --- RESPONSIVE DESKTOP (GRID 2x) --- */
     @media (min-width: 768px) {
       .container {
@@ -302,7 +455,6 @@
       }
       
       .btn {
-          padding-left: 1.5rem;
-          justify-content: flex-start; /* DESKTOP: Rata Kiri */
+          padding-left: 1.1rem;
       }
     }
